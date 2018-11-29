@@ -100,7 +100,6 @@
     "no-sequences": 2,
     "no-unused-expressions": 2,
     "no-void": 0,
-    "no-warning-comments": 2,
     "no-with": 2,
     "radix": 2,
     "vars-on-top": 0,
@@ -155,7 +154,6 @@
     "no-inline-comments": 0,
     "no-lonely-if": 2,
     "no-mixed-spaces-and-tabs": 2,
-    "no-nested-ternary": 2,
     "no-new-object": 2,
     "semi-spacing": [
       2,
@@ -214,15 +212,6 @@
     "wrap-regex": 0,
     // Legacy
     "max-depth": 0,
-    "max-len": [
-      2,
-      120,
-      {
-        "ignoreStrings": true,
-        "ignoreTemplateLiterals": true,
-        "ignoreComments": true
-      }
-    ],
     "max-params": 0,
     "max-statements": 0,
     "no-plusplus": 0,
@@ -261,9 +250,9 @@
         "maximum": 3
       }
     ],
-    "react/jsx-no-literals": 2,
     "react/sort-prop-types": 2,
     "react/self-closing-comp": 2,
-    "react/sort-comp": 2
+    "react/sort-comp": 2,
+    "no-useless-escape": "off"
   }
 }

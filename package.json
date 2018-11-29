@@ -5,7 +5,7 @@
   "main": "index.jsx",
   "scripts": {
     "clean:build": "shx rm -rf dist",
-    "lint": "./node_modules/.bin/tslint -p tslint.json 'src/**/*.{ts,tsx}'",
+    "lint": "./node_modules/.bin/eslint 'src/**/*.{js,jsx}' --fix",
     "sass-lint": "./node_modules/.bin/sass-lint -v -q",
     "test:unit": "cross-env NODE_ENV=test jest",
     "analyze": "npm run lint && npm run sass-lint && npm run test:unit",
