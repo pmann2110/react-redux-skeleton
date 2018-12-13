@@ -8,8 +8,8 @@ import { AppConfigs } from 'common';
  * @param {boolean} isAuthorized
  * @returns {string}
  */
-const getRootLink = (apiType, isAuthorized) => {
-    return AppConfigs.getDefaultApiEndpoint();
+const getRootLink = () => {
+  return AppConfigs.getDefaultApiEndpoint();
 };
 
 /**
@@ -19,7 +19,7 @@ const getRootLink = (apiType, isAuthorized) => {
  * @returns {string}
  */
 const getFullAPILink = (link, options = {}) => {
-    return getRootLink(options.apiType, options.isAuthorized) + link;
+  return getRootLink(options.apiType, options.isAuthorized) + link;
 };
 
 /**
@@ -28,7 +28,7 @@ const getFullAPILink = (link, options = {}) => {
  * @returns {any}
  */
 const handleSuccess = (response) => {
-    return response;
+  return response;
 };
 
 /**
@@ -37,7 +37,7 @@ const handleSuccess = (response) => {
  * @returns {Promise}
  */
 const handleError = (error) => {
-    return Promise.reject(error);
+  return Promise.reject(error);
 };
 
 /**
@@ -46,29 +46,13 @@ const handleError = (error) => {
 const service = axios.create();
 service.interceptors.response.use(handleSuccess, handleError);
 
-/**
- * Request Wrapper with default success/error actions
- */
-const request = (options) => {
-    const onSuccess = (response) => {
-        return response.data;
-    };
-
-    const onError = (error) => {
-        return Promise.reject(error.response || error.message);
-    };
-
-    return service(options)
-        .then(onSuccess)
-        .catch(onError);
-};
 
 /**
  * Get Request headers
  * @param options
  */
-const getRequestHeaders = async (options) => {
-    return {};
+const getRequestHeaders = async () => {
+  return {};
 };
 
 /**
@@ -77,11 +61,11 @@ const getRequestHeaders = async (options) => {
  * @returns {Promise}
  */
 const handleResponseData = (data) => {
-    if (!!data && data.status === 200 || data.status === 201) {
-        return Promise.resolve(data);
-    }
+  if (!!data && data.status === 200 || data.status === 201) {
+    return Promise.resolve(data);
+  }
 
-    return Promise.reject(data);
+  return Promise.reject(data);
 };
 
 /**
@@ -91,15 +75,15 @@ const handleResponseData = (data) => {
  * @returns {Promise<any>}
  */
 export const GET = async (path, options) => {
-    const requestHeaders = await getRequestHeaders(options);
-    path = getFullAPILink(path, options);
-    return service.get(path, {
-        headers: requestHeaders
-    }).then((data) => {
-        return handleResponseData(data);
-    },      (err) => {
-        return Promise.reject(err);
-    });
+  const requestHeaders = await getRequestHeaders(options);
+  path = getFullAPILink(path, options);
+  return service.get(path, {
+    headers: requestHeaders
+  }).then((data) => {
+    return handleResponseData(data);
+  }, (err) => {
+    return Promise.reject(err);
+  });
 };
 
 /**
@@ -110,19 +94,19 @@ export const GET = async (path, options) => {
  * @returns {Promise<any>}
  */
 export const POST = async (path, payload, options) => {
-    const requestHeaders = await getRequestHeaders(options);
-    path = getFullAPILink(path, options);
-    return service.request({
-        method: 'POST',
-        url: path,
-        responseType: 'json',
-        data: payload,
-        headers: requestHeaders
-    }).then((data) => {
-        return handleResponseData(data);
-    },      (err) => {
-        return Promise.reject(err);
-    });
+  const requestHeaders = await getRequestHeaders(options);
+  path = getFullAPILink(path, options);
+  return service.request({
+    method: 'POST',
+    url: path,
+    responseType: 'json',
+    data: payload,
+    headers: requestHeaders
+  }).then((data) => {
+    return handleResponseData(data);
+  }, (err) => {
+    return Promise.reject(err);
+  });
 };
 
 /**
@@ -133,19 +117,19 @@ export const POST = async (path, payload, options) => {
  * @returns {Promise<any>}
  */
 export const PUT = async (path, payload, options) => {
-    const requestHeaders = await getRequestHeaders(options);
-    path = getFullAPILink(path, options);
-    return service.request({
-        method: 'PUT',
-        url: path,
-        responseType: 'json',
-        data: payload,
-        headers: requestHeaders
-    }).then((data) => {
-        return handleResponseData(data);
-    },      (err) => {
-        return Promise.reject(err);
-    });
+  const requestHeaders = await getRequestHeaders(options);
+  path = getFullAPILink(path, options);
+  return service.request({
+    method: 'PUT',
+    url: path,
+    responseType: 'json',
+    data: payload,
+    headers: requestHeaders
+  }).then((data) => {
+    return handleResponseData(data);
+  }, (err) => {
+    return Promise.reject(err);
+  });
 };
 
 /**
@@ -157,17 +141,17 @@ export const PUT = async (path, payload, options) => {
  * @constructor
  */
 export const DELETE = async (path, payload, options) => {
-    const requestHeaders = await getRequestHeaders(options);
-    path = getFullAPILink(path, options);
-    return service.request({
-        method: 'DELETE',
-        url: path,
-        responseType: 'json',
-        data: payload,
-        headers: requestHeaders
-    }).then((data) => {
-        return handleResponseData(data);
-    },      (err) => {
-        return Promise.reject(err);
-    });
+  const requestHeaders = await getRequestHeaders(options);
+  path = getFullAPILink(path, options);
+  return service.request({
+    method: 'DELETE',
+    url: path,
+    responseType: 'json',
+    data: payload,
+    headers: requestHeaders
+  }).then((data) => {
+    return handleResponseData(data);
+  }, (err) => {
+    return Promise.reject(err);
+  });
 };

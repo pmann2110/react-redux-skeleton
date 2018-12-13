@@ -16,9 +16,9 @@ import frLocaleData from './fr.json';
 import esLocaleData from './es.json';
 
 export const messages = {
-    en: enLocaleData,
-    fr: frLocaleData,
-    es: esLocaleData
+  en: enLocaleData,
+  fr: frLocaleData,
+  es: esLocaleData
 };
 
 export let locale = (navigator.language ||
@@ -28,7 +28,7 @@ export let locale = (navigator.language ||
 const langQuery = Helper.getUrlVars();
 
 if (langQuery.lang && messages[langQuery.lang]) {
-    locale = langQuery.lang;
+  locale = langQuery.lang;
 }
 
 // Split locales with a region code

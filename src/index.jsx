@@ -11,7 +11,7 @@ const rootEl = document.getElementById('root');
 const store = configureStore();
 
 ReactDOM.render(
-    <App store={store}/>,
-    rootEl
+  <App store={store}/>,
+  rootEl
 );
 registerServiceWorker();

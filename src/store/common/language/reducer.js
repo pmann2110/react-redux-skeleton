@@ -8,20 +8,20 @@ const isValidLocale = localeSession && !isNull(localeSession) && !isEqual(locale
 const locale = isValidLocale ? localeSession : 'en';
 
 export const initialState = {
-    newLocale: locale,
-    isSwitched: isValidLocale
+  newLocale: locale,
+  isSwitched: isValidLocale
 };
 
 const reducer = (state = initialState, action) => {
-    const {payload, type} = action;
-    switch (type) {
-        case LanguageActionTypes.LANGUAGE_CHANGE:
-            return {...state, newLocale: payload.locale, isSwitched: true};
-        case LanguageActionTypes.LANGUAGE_CLEAR:
-            return {...state, isSwitched: false};
-        default:
-            return state;
-    }
+  const {payload, type} = action;
+  switch (type) {
+    case LanguageActionTypes.LANGUAGE_CHANGE:
+      return {...state, newLocale: payload.locale, isSwitched: true};
+    case LanguageActionTypes.LANGUAGE_CLEAR:
+      return {...state, isSwitched: false};
+    default:
+      return state;
+  }
 };
 
 export default reducer;

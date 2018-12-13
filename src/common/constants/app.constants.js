@@ -1,3 +1,3 @@
 export default {
-    LocaleSessionStorageKey: 'current_locale',
+  LocaleSessionStorageKey: 'current_locale'
 };
